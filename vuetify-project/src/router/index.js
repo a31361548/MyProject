@@ -14,22 +14,22 @@ const routes = [
           title: '人類醉後的希望'
         }
       },
-      {
-        path: 'register',
-        name: 'Register',
-        component: () => import('@/views/RegisterView.vue'),
-        meta: {
-          title: '人類醉後的希望 | 註冊'
-        }
-      },
-      {
-        path: 'login',
-        name: 'Login',
-        component: () => import('@/views/LoginView.vue'),
-        meta: {
-          title: '人類醉後的希望 | 登入'
-        }
-      },
+      // {
+      //   path: 'register',
+      //   name: 'Register',
+      //   component: () => import('@/views/RegisterView.vue'),
+      //   meta: {
+      //     title: '人類醉後的希望 | 註冊'
+      //   }
+      // },
+      // {
+      //   path: 'login',
+      //   name: 'Login',
+      //   component: () => import('@/views/LoginView.vue'),
+      //   meta: {
+      //     title: '人類醉後的希望 | 登入'
+      //   }
+      // },
       {
         path: 'menu1',
         name: 'Menu1',

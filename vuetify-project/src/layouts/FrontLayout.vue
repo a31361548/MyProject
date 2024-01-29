@@ -9,7 +9,7 @@
       </template>
       <!-- 下拉選單 -->
       <div>
-        <v-menu v-for="(item) in menu" :key="item.to" class="menu">
+        <v-menu v-for="(item) in menu" :key="item.to" class="menu" open-on-hover>
           <template v-slot:activator="{ props }">
             <v-btn
               v-bind="props"
@@ -31,9 +31,35 @@
         </v-list>
       </v-menu>
     </div>
-    <!-- <VSpacer /> -->
+    <!--  登入鍵 --->
     <div>
-      <VBtn v-for="item in navItems" :key="item.to" :to="item.to" :prepend-icon="item.icon"  class="buttonstyle">{{ item.text }}</VBtn>
+      <VBtn v-for="item in navItems" :key="item.to" :to="item.to" :prepend-icon="item.icon"  class="buttonstyle">
+        {{ item.text }}
+        <v-dialog
+        v-model="dialog"
+        activator="parent"
+        width="auto"
+      >
+        <v-card min-width="500">
+          <v-tabs
+            v-model="tab"
+            bg-color="primary"
+          >
+            <v-tab value="one">登入</v-tab>
+            <v-tab value="two">註冊</v-tab>
+          </v-tabs>
+
+          <VCardText>
+            <VWindow v-model="tab">
+          <Register></Register>
+          <Login></Login>
+            </VWindow>
+          </VCardText>
+          <v-card-actions>
+          </v-card-actions>
+        </v-card>
+      </v-dialog>
+      </VBtn>
     </div>
   </VContainer>
 </VAppBar>
@@ -44,13 +70,19 @@
 
 <script setup>
 import { useDisplay } from 'vuetify'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
+import Register from '../components/UserRegister.vue'
+import Login from '../components/UserLogin.vue'
 
 const { mobile } = useDisplay()
 const isMobile = computed(() => mobile.value)
 
+const tab = ref(null)
+
+const dialog = ref(false)
+
 const navItems = [
-  { to: '/login', text: '登入', icon: 'mdi-login' }
+  { to: '/', text: '登入', icon: 'mdi-login' }
 ]
 
 const menu = [
@@ -82,6 +114,10 @@ const menu = [
 .buttonstyle{
   font-size: 1.5rem;
   font-weight: bolder;
+}
+
+.loginbutton{
+  margin-left: auto;
 }
 
 </style>

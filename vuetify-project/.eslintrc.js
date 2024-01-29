@@ -10,6 +10,7 @@ module.exports = {
     '@vue/standard'
   ],
   rules: {
-    'vue/max-attributes-per-line': 'off'
+    'vue/max-attributes-per-line': 'off',
+    'vue/comment-directive': 'off'
   }
 }
